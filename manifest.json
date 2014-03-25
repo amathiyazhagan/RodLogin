@@ -1,12 +1,13 @@
 {
   "manifest_version": 2,
 
-  "name": "RodLogin",
-  "description": "Reduce Key Strokes",
+  "name": "One-click Kittens",
+  "description": "This extension demonstrates a 'browser action' with kittens.",
   "version": "1.0",
 
   "background": { 
-    "scripts": ["background.js"]
+    //"scripts": ["background.js"],
+    "page": "background.html"
   },
   
   "browser_action": {
@@ -17,5 +18,13 @@
   "content_scripts": [{
       "matches":["https://*.ssi-cloud.com/*"],
       "js":["content.js"]
-    }]
+    },{
+      "matches": ["https://accounts.google.com/o/oauth2/approval*"],
+      "js": ["oauth2/oauth2_inject.js"],
+      "run_at":"document_end"
+    }],
+
+  "permissions": [
+    "https://accounts.google.com/o/oauth2/token","tabs"
+  ]
 }
