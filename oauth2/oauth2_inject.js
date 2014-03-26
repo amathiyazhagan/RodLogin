@@ -36,8 +36,11 @@ params += '&from=' + encodeURIComponent(url);
 // Redirect back to the extension itself so that we have priveledged
 // access again
 
+var redirect = chrome.extension.getURL('oauth2/oauth2.html');
+console.log(redirect);
+window.location = redirect + params;
 
-window.location='chrome-extension://ekchhocjndhmdkaahoidfdhipblkbjdh/oauth2/oauth2.html';
-window.location='chrome-extension://ekchhocjndhmdkaahoidfdhipblkbjdh/oauth2/oauth2.html'
+//window.location='chrome-extension://ekchhocjndhmdkaahoidfdhipblkbjdh/oauth2/oauth2.html';
+//window.location='chrome-extension://ekchhocjndhmdkaahoidfdhipblkbjdh/oauth2/oauth2.html'
 
 

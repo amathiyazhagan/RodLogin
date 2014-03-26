@@ -30,8 +30,15 @@ function onAuthorized() {
   };
 
   // Send: GET https://docs.google.com/feeds/default/private/full?alt=json
-  //googleAuth.sendSignedRequest(url, callback, request);
-  console.log('onAuthorized');
+  var theUrl = 'https://spreadsheets.google.com/feeds/list/0AsecKBAmOV9CdG1XLXc4dEUzSGZwQVFaLU5vYVZkakE/od6/private/values?alt=json&access_token='+googleAuth.getAccessToken();
+ 	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET", theUrl, false );
+	xmlHttp.send( null );
+	console.log(xmlHttp.responseText);
+
+  console.log(googleAuth.getAccessToken());
+  	
+  //console.log('onAuthorized');
 };
 
 googleAuth.authorize(onAuthorized);
